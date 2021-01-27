@@ -21,10 +21,23 @@ body {
   max-width: 44rem;
 }
 
-.main {
-  height: 100vh;
+.morning {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#FDFFBC), color-stop(#FFEEBB), to(#FFC1B6));
   background-image: linear-gradient(#FDFFBC, #FFEEBB, #FFC1B6);
+}
+
+.afternoon {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#AEE6E6), color-stop(#FFDA77), to(#FFA45B));
+  background-image: linear-gradient(#AEE6E6, #FFDA77, #FFA45B);
+}
+
+.evening {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D789D7), color-stop(#9D65C9), to(#2A3D66));
+  background-image: linear-gradient(#D789D7, #9D65C9, #2A3D66);
+}
+
+.main {
+  height: 100vh;
 }
 
 .main-container {

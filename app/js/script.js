@@ -3,6 +3,7 @@ const ampm = document.querySelector("#ampm")
 const day = document.querySelector("#day")
 const date = document.querySelector("#date")
 const year = document.querySelector("#year")
+const main = document.querySelector('.main')
 
 
 async function getWeather(){
@@ -43,5 +44,30 @@ function showCurrentDate(){
     year.innerHTML = yearNow
 }
 
+function changeBackground(){
+    let current = new Date()
+    let timeNow = current.getHours()
+    console.log(timeNow)
+    
+    if (timeNow > 5 && timeNow < 12){
+        console.log('morning')
+        main.classList.remove('afternoon', 'evening')
+        main.classList.add('morning');
+    } 
+    else if (timeNow >= 12 && timeNow < 18){
+        console.log('afternoon')
+        main.classList.remove('morning', 'evening')
+        main.classList.add('afternoon');
+
+    } else {
+        console.log('evening')
+        main.classList.remove('morning', 'afternoon')
+        main.classList.add('evening');
+    }
+}
+
+
+
 let getTime = setInterval(() => showCurrentTime(), 1000);
 let getDate = setInterval(() => showCurrentDate(), 1000);
+window.addEventListener('load', changeBackground)

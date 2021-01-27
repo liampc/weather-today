@@ -5,15 +5,21 @@ $VeryLightYellow: #FDFFBC;
 $LightYellow: #FFEEBB;
 $LightPink: #FFC1B6;
 
+$morning: linear-gradient($VeryLightYellow, $LightYellow, $LightPink);
+
 // afternoon
 $LightBlue: #AEE6E6;
 $Yellow: #FFDA77;
 $Orange: #FFA45B;
 
+$afternoon: linear-gradient($LightBlue, $Yellow, $Orange);
+
 // evening
 $LightPurple: #D789D7;
 $Purple: #9D65C9;
 $Violet: #2A3D66;
+
+$evening: linear-gradient($LightPurple, $Purple, $Violet);
 
 $White: rgba(251,246,240,0.84);
 

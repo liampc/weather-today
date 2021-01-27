@@ -19,3 +19,15 @@ body {
     margin: 0 auto;
     max-width: 44rem;
 }
+
+.morning {
+    background-image: $morning;
+}
+
+.afternoon {
+    background-image: $afternoon;
+}
+
+.evening {
+    background-image: $evening;
+}
