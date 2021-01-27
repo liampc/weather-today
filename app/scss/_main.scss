@@ -22,8 +22,10 @@
 
 
         & > * {
+            padding: 1.0625rem;
             background-color: $White;
             border-radius: 0.625rem;
+            display:flex;
             
         }
 
@@ -33,16 +35,28 @@
 
     &-time {
         grid-area: time;
-        display:flex;
         justify-content: space-evenly;
         align-items: center;
         font-size: 3.5rem;
     }
     &-date {
         grid-area: date;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        font-size: 1.9rem;
+
     }
     &-temp{
         grid-area: temp;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        font-size: 1.8rem;
+
+        :first-child {
+            font-size: 1.5rem;
+        }
     }
 
 

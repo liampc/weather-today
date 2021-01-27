@@ -44,8 +44,12 @@ body {
 }
 
 .main-container > * {
+  padding: 1.0625rem;
   background-color: rgba(251, 246, 240, 0.84);
   border-radius: 0.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .main-time {
@@ -53,9 +57,6 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: time;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -69,11 +70,37 @@ body {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: date;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  font-size: 1.9rem;
 }
 
 .main-temp {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: temp;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  font-size: 1.8rem;
+}
+
+.main-temp :first-child {
+  font-size: 1.5rem;
 }
 /*# sourceMappingURL=style.css.map */
