@@ -1,5 +1,9 @@
 const time = document.querySelector("#time")
 const ampm = document.querySelector("#ampm")
+const day = document.querySelector("#day")
+const date = document.querySelector("#date")
+const year = document.querySelector("#year")
+
 
 async function getWeather(){
     const response = await fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
@@ -8,10 +12,9 @@ async function getWeather(){
     })
 }
 
-function getCurrentTime(){
+function showCurrentTime(){
     let current = new Date()
     
-
     let hour = current.getHours() 
     let getampm = hour >= 12 ? 'PM' : 'AM'
     hour = hour >= 12 ? hour % 12 : hour
@@ -24,5 +27,21 @@ function getCurrentTime(){
     ampm.innerHTML = getampm
 }
 
-let getTime = setInterval(() => getCurrentTime(), 1000);
+function showCurrentDate(){
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
+    let current = new Date()
+
+    let monthNow = current.getMonth()
+    let dateNow = current.getDate()
+    let dayNow = current.getDay()
+    let yearNow = current.getFullYear()
+
+    day.innerHTML = days[dayNow]
+    date.innerHTML = `${months[monthNow]} ${dateNow}`
+    year.innerHTML = yearNow
+}
+
+let getTime = setInterval(() => showCurrentTime(), 1000);
+let getDate = setInterval(() => showCurrentDate(), 1000);
