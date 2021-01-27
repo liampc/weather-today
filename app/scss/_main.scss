@@ -1,0 +1,36 @@
+.main {
+
+    height:100%;
+
+    &-container {
+        margin: 10rem 2.5rem;
+        height: 18.75rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+        "time time"
+        "date temp";
+        gap: 0.3125rem;
+        
+
+        & > * {
+            background-color: $White;
+            border-radius: 0.625rem;
+        }
+    }
+
+
+    &-time {
+        grid-area: time;
+
+    }
+    &-date {
+        grid-area: date;
+    }
+    &-temp{
+        grid-area: temp;
+    }
+
+    
+}
