@@ -24,8 +24,9 @@ body {
 }
 
 .main-container {
-  margin: 10rem 2.5rem;
+  margin: 10rem auto;
   height: 18.75rem;
+  max-width: 80vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -34,6 +35,12 @@ body {
       grid-template-rows: 1fr 1fr;
       grid-template-areas: "time time" "date temp";
   gap: 0.3125rem;
+}
+
+@media (min-width: 64rem) {
+  .main-container {
+    max-width: 44rem;
+  }
 }
 
 .main-container > * {
@@ -46,6 +53,16 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: time;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3.5rem;
 }
 
 .main-date {
