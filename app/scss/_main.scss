@@ -1,11 +1,10 @@
 .main {
-
-    height:100%;
+    height: 100vh;
+    background-image: linear-gradient($VeryLightYellow, $LightYellow, $LightPink);
 
     &-container {
-        margin: 10rem auto;
-        height: 18.75rem;
-        max-width: 80vw;
+        padding:10rem 1rem;
+        max-width: 90vw;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -16,7 +15,7 @@
         
 
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(medium){
             max-width: 44rem;
         }
 
