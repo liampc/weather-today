@@ -158,7 +158,8 @@ body {
   .circle > * {
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 40%;
+    right: 0;
     background-repeat: no-repeat;
     visibility: hidden;
   }
@@ -167,8 +168,8 @@ body {
 @media (min-width: 64rem) {
   .circle-morning {
     background-image: url("/images/morning-desktop.png");
-    background-position: 108% 88%;
-    background-size: 32%;
+    background-position: 132% 74%;
+    background-size: 79%;
   }
 }
 
@@ -176,7 +177,7 @@ body {
   .circle-afternoon {
     background-image: url("/images/afternoon-desktop.png");
     background-position: 105% 11%;
-    background-size: 32%;
+    background-size: 68%;
   }
 }
 
@@ -184,7 +185,7 @@ body {
   .circle-evening {
     background-image: url("/images/evening-desktop.png");
     background-position: 101% -25%;
-    background-size: 32%;
+    background-size: 80%;
   }
 }
 /*# sourceMappingURL=style.css.map */
