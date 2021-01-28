@@ -5,7 +5,9 @@ const date = document.querySelector("#date")
 const year = document.querySelector("#year")
 const main = document.querySelector('.main')
 const greeting = document.querySelector('#greeting')
-
+const morning = document.querySelector('.circle-morning')
+const afternoon = document.querySelector('.circle-afternoon')
+const evening = document.querySelector('.circle-evening')
 
 async function getWeather(){
     // ! replace  http://dataservice.accuweather.com/currentconditions/v1/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj
@@ -58,16 +60,19 @@ function changeBackground(){
     
     if (timeNow > 5 && timeNow < 12){
         greeting.innerHTML = 'Good Morning!'
+        morning.style.visibility = 'visible'
         main.classList.remove('afternoon', 'evening')
         main.classList.add('morning');
     } 
     else if (timeNow >= 12 && timeNow < 18){
         greeting.innerHTML = 'Good Afternoon'
+        afternoon.style.visibility = 'visible'
         main.classList.remove('morning', 'evening')
         main.classList.add('afternoon');
 
     } else {
         greeting.innerHTML = 'Good Evening!'
+        evening.style.visibility = 'visible'
         main.classList.remove('morning', 'afternoon')
         main.classList.add('evening');
     }
