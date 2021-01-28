@@ -39,6 +39,8 @@ body {
 
 .main {
   min-height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D789D7), color-stop(#9D65C9), to(#2A3D66));
+  background-image: linear-gradient(#D789D7, #9D65C9, #2A3D66);
 }
 
 .main-container {
@@ -156,6 +158,32 @@ body {
     background-image: url("/images/morning-desktop.png");
     background-repeat: no-repeat;
     background-position: 108% 88%;
+    background-size: 32%;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 64rem) {
+  .circle-afternoon {
+    position: absolute;
+    background-image: url("/images/afternoon-desktop.png");
+    background-repeat: no-repeat;
+    background-position: 105% 11%;
+    background-size: 32%;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 64rem) {
+  .circle-evening {
+    position: absolute;
+    background-image: url("/images/evening-desktop.png");
+    background-repeat: no-repeat;
+    background-position: 101% -25%;
     background-size: 32%;
     height: 100%;
     width: 100%;

@@ -1,6 +1,6 @@
 .main {
     min-height: 100vh;
-    
+    background-image: $evening;
 
     &-container {
         padding:5rem 1rem;
@@ -98,7 +98,41 @@
         background-position: 108% 88%;
         background-size: 32%;
         height: 100%;
-        width: 100%
+        width: 100%;
+        visibility: hidden;
+        
+    
+        }
+    }
+
+    @include breakpoint-up(large){
+
+        &-afternoon {
+        position: absolute;
+        background-image: url('/images/afternoon-desktop.png') ;
+        background-repeat: no-repeat;
+        background-position: 105% 11%;
+        background-size: 32%;
+        height: 100%;
+        width: 100%;
+        visibility: hidden;
+        
+    
+        }
+    }
+
+    @include breakpoint-up(large){
+
+        &-evening {
+        position: absolute;
+        background-image: url('/images/evening-desktop.png') ;
+        background-repeat: no-repeat;
+        background-position: 101% -25%;
+        background-size: 32%;
+        height: 100%;
+        width: 100%;
+        // visibility: hidden;
+        
     
         }
     }
