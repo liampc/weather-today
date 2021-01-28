@@ -14,6 +14,7 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.3;
+  overflow-x: hidden;
 }
 
 .container {
@@ -72,9 +73,27 @@ body {
   padding: 1.0625rem;
   background-color: rgba(251, 246, 240, 0.84);
   border-radius: 0.625rem;
+  font-size: 1.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+}
+
+@media (min-width: 64rem) {
+  .main-container > * {
+    font-size: 2.5rem;
+    padding: 1.5rem;
+  }
 }
 
 .main-greeting {
@@ -82,44 +101,27 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: greeting;
-  font-size: 1.8rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .main-date {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: date;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
-  font-size: 1.9rem;
 }
 
 .main-time {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: time;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1.9rem;
 }
 
 .main-temp {
@@ -127,17 +129,12 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: temp;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  font-size: 1.9rem;
 }
 
 .main-weather {
@@ -145,16 +142,23 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: weather;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
   -webkit-box-align: left;
       -ms-flex-align: left;
           align-items: left;
-  font-size: 1.5rem;
+}
+
+@media (min-width: 64rem) {
+  .circle-morning {
+    position: absolute;
+    background-image: url("/images/morning-desktop.png");
+    background-repeat: no-repeat;
+    background-position: 108% 88%;
+    background-size: 32%;
+    height: 100%;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

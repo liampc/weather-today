@@ -32,7 +32,17 @@
             padding: 1.0625rem;
             background-color: $White;
             border-radius: 0.625rem;
+            font-size: 1.9rem;
             display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: left;
+
+
+            @include breakpoint-up(large){
+                font-size: 2.5rem;
+                padding: 1.5rem;
+            }
             
         }
 
@@ -41,46 +51,56 @@
 
     &-greeting {
         grid-area: greeting;
-        font-size: 1.8rem;
-        justify-content: center;
+        align-items: center;
     }
 
 
     &-date {
         grid-area: date;
-        flex-direction: column;
-        justify-content: center;
-        align-items: left;
-        font-size: 1.9rem;
-
+     
+    
     }
 
     &-time {
         grid-area: time;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-size: 1.9rem;
+        
     }
     
     &-temp {
         grid-area: temp;
-        flex-direction: column;
         align-items: flex-start;
         justify-content: space-evenly;
-        font-size: 1.9rem;
+        
     }
 
     &-weather{
         grid-area: weather;
-        flex-direction: column;
         justify-content: left;
         align-items: left;
-        font-size: 1.5rem;
+       
  
     }
 
+
+
+}
+
+.circle {
     
+    @include breakpoint-up(large){
 
-
+        &-morning {
+        position: absolute;
+        background-image: url('/images/morning-desktop.png') ;
+        background-repeat: no-repeat;
+        background-position: 108% 88%;
+        background-size: 32%;
+        height: 100%;
+        width: 100%
+    
+        }
+    }
+    
 }
