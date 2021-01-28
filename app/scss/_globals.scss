@@ -21,6 +21,9 @@ body {
     max-width: 44rem;
 }
 
+
+// background linear gradients 
+
 .morning {
     background-image: $morning;
 }
@@ -33,6 +36,8 @@ body {
     background-image: $evening;
 }
 
+
+//visibility 
 .visible {
     visibility: visible;
 }
@@ -40,3 +45,15 @@ body {
 .hidden {
     visibility: hidden;
 }
+
+
+.button {
+    background-color: $LightBlue;
+    color: black;
+    border-radius: 5px;
+    border:none;
+    
+}
+
+
+

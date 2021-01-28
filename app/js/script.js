@@ -133,6 +133,6 @@ hideBtns.forEach(btn => {
 
 let getTime = setInterval(() => showCurrentTime(), 1000);
 let getDate = setInterval(() => showCurrentDate(), 1000);
-let showWeather = setInterval(() => getWeather() , 60000);
+
+
 window.addEventListener('load', changeBackground)
-window.addEventListener('load', getWeather)
