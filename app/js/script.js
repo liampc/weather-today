@@ -8,15 +8,25 @@ const greeting = document.querySelector('#greeting')
 const morning = document.querySelector('.circle-morning')
 const afternoon = document.querySelector('.circle-afternoon')
 const evening = document.querySelector('.circle-evening')
+const weather = document.querySelector('#weather')
+const temp = document.querySelector('#temp')
+
 
 async function getWeather(){
-    // ! replace  http://dataservice.accuweather.com/currentconditions/v1/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj
-    // http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj
-    const response = await fetch("http://dataservice.accuweather.com/currentconditions/v1/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
+  
+    const response = await fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
     response.json().then(function(response){
         console.log(response)
-    })
 
+        let minTemp = response.DailyForecasts[0].Temperature.Minimum.Value
+        let maxTemp = response.DailyForecasts[0].Temperature.Maximum.Value
+        let report = response.Headline.Text
+
+        temp.innerHTML = `${minTemp} - ${maxTemp} F`
+        weather.innerHTML = report
+
+       
+    })
 
     
 }
@@ -82,4 +92,6 @@ function changeBackground(){
 
 let getTime = setInterval(() => showCurrentTime(), 1000);
 let getDate = setInterval(() => showCurrentDate(), 1000);
+let showWeather = setInterval(() => getWeather , 60000);
 window.addEventListener('load', changeBackground)
+window.addEventListener('load', getWeather)
