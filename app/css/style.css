@@ -37,6 +37,14 @@ body {
   background-image: linear-gradient(#D789D7, #9D65C9, #2A3D66);
 }
 
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .main {
   min-height: 100vh;
 }
@@ -46,9 +54,9 @@ body {
   background-color: #fbf6f0;
   border: 1px solid gray;
   border-radius: 5px;
-  width: 37rem;
+  width: 19rem;
   height: 10rem;
-  top: 61%;
+  top: 40%;
   left: 11%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,6 +71,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (min-width: 64rem) {
+  .main-overlay {
+    width: 37rem;
+    height: 10rem;
+  }
 }
 
 .main-overlay input {

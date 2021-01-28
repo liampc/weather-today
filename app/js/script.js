@@ -10,6 +10,8 @@ const afternoon = document.querySelector('.circle-afternoon')
 const evening = document.querySelector('.circle-evening')
 const weather = document.querySelector('#weather')
 const temp = document.querySelector('#temp')
+const hideBtns = document.querySelectorAll(".will-hide")
+const overlay = document.querySelector('.main-overlay')
 
 
 function converToCelcius(tempF){
@@ -114,9 +116,23 @@ function changeBackground(){
 }
 
 
+hideBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        if (overlay.classList.contains('hidden')){
+            overlay.classList.remove('hidden')
+            overlay.classList.add('visible')
+        } else {
+            overlay.classList.remove('visible')
+            overlay.classList.add('hidden')
+        }
+    
+    }
+)})
+
 
 let getTime = setInterval(() => showCurrentTime(), 1000);
 let getDate = setInterval(() => showCurrentDate(), 1000);
-let showWeather = setInterval(() => getWeather , 60000);
+let showWeather = setInterval(() => getWeather() , 60000);
 window.addEventListener('load', changeBackground)
 window.addEventListener('load', getWeather)
