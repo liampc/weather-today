@@ -96,6 +96,10 @@ body {
   }
 }
 
+.main-container::after {
+  content: "Source: AccuWeather";
+}
+
 .main-greeting {
   -ms-grid-row: 1;
   -ms-grid-column: 1;

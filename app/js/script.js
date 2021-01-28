@@ -12,17 +12,25 @@ const weather = document.querySelector('#weather')
 const temp = document.querySelector('#temp')
 
 
+function converToCelcius(tempF){
+    return tempC =  ((tempF - 32) * 5 / 9).toFixed(0)
+}
+
+
 async function getWeather(){
   
     const response = await fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
     response.json().then(function(response){
         console.log(response)
 
-        let minTemp = response.DailyForecasts[0].Temperature.Minimum.Value
-        let maxTemp = response.DailyForecasts[0].Temperature.Maximum.Value
         let report = response.Headline.Text
+        let minTemp = response.DailyForecasts[0].Temperature.Minimum.Value
+        minTemp = converToCelcius(parseInt(minTemp))
+        let maxTemp = response.DailyForecasts[0].Temperature.Maximum.Value
+        maxTemp = converToCelcius(parseInt(maxTemp))
+        
 
-        temp.innerHTML = `${minTemp} - ${maxTemp} F`
+        temp.innerHTML = `${minTemp} - ${maxTemp} C`
         weather.innerHTML = report
 
        
