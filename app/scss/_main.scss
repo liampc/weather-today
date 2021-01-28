@@ -1,24 +1,32 @@
 .main {
-    height: 100vh;
+    min-height: 100vh;
     
 
     &-container {
-        padding:10rem 1rem;
+        padding:5rem 1rem;
+        height: 100%;
         max-width: 90vw;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: .5fr 1fr 1fr .5fr;
         grid-template-areas:
-        "time time"
-        "date temp";
+        "greeting greeting"
+        "date time"
+        "temp temp"
+        "weather weather";
         gap: 0.3125rem;
         
 
 
         @include breakpoint-up(medium){
-            max-width: 44rem;
+            max-width: 40rem;
         }
 
+        @include breakpoint-up(large){
+            max-width: 40rem;
+            padding-top: 9rem;
+            margin-left: 8rem;
+        }
 
         & > * {
             padding: 1.0625rem;
@@ -31,13 +39,13 @@
         
     }
 
-
-    &-time {
-        grid-area: time;
-        justify-content: space-evenly;
-        align-items: center;
-        font-size: 3.5rem;
+    &-greeting {
+        grid-area: greeting;
+        font-size: 1.8rem;
+        justify-content: center;
     }
+
+
     &-date {
         grid-area: date;
         flex-direction: column;
@@ -46,17 +54,33 @@
         font-size: 1.9rem;
 
     }
-    &-temp{
-        grid-area: temp;
+
+    &-time {
+        grid-area: time;
         flex-direction: column;
         justify-content: center;
-        align-items: left;
-        font-size: 1.8rem;
-
-        :first-child {
-            font-size: 1.5rem;
-        }
+        align-items: center;
+        font-size: 1.9rem;
     }
+    
+    &-temp {
+        grid-area: temp;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        font-size: 1.9rem;
+    }
+
+    &-weather{
+        grid-area: weather;
+        flex-direction: column;
+        justify-content: left;
+        align-items: left;
+        font-size: 1.5rem;
+ 
+    }
+
+    
 
 
 }

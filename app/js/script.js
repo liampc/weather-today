@@ -4,14 +4,21 @@ const day = document.querySelector("#day")
 const date = document.querySelector("#date")
 const year = document.querySelector("#year")
 const main = document.querySelector('.main')
+const greeting = document.querySelector('#greeting')
 
 
 async function getWeather(){
-    const response = await fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
+    // ! replace  http://dataservice.accuweather.com/currentconditions/v1/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj
+    // http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj
+    const response = await fetch("http://dataservice.accuweather.com/currentconditions/v1/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
     response.json().then(function(response){
         console.log(response)
     })
+
+
+    
 }
+
 
 function showCurrentTime(){
     let current = new Date()
@@ -47,20 +54,20 @@ function showCurrentDate(){
 function changeBackground(){
     let current = new Date()
     let timeNow = current.getHours()
-    console.log(timeNow)
+    
     
     if (timeNow > 5 && timeNow < 12){
-        console.log('morning')
+        greeting.innerHTML = 'Good Morning!'
         main.classList.remove('afternoon', 'evening')
         main.classList.add('morning');
     } 
     else if (timeNow >= 12 && timeNow < 18){
-        console.log('afternoon')
+        greeting.innerHTML = 'Good Afternoon'
         main.classList.remove('morning', 'evening')
         main.classList.add('afternoon');
 
     } else {
-        console.log('evening')
+        greeting.innerHTML = 'Good Evening!'
         main.classList.remove('morning', 'afternoon')
         main.classList.add('evening');
     }

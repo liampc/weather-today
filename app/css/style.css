@@ -37,25 +37,34 @@ body {
 }
 
 .main {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .main-container {
-  padding: 10rem 1rem;
+  padding: 5rem 1rem;
+  height: 100%;
   max-width: 90vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      grid-template-areas: "time time" "date temp";
+  -ms-grid-rows: .5fr 1fr 1fr .5fr;
+      grid-template-rows: .5fr 1fr 1fr .5fr;
+      grid-template-areas: "greeting greeting" "date time" "temp temp" "weather weather";
   gap: 0.3125rem;
 }
 
 @media (min-width: 40rem) {
   .main-container {
-    max-width: 44rem;
+    max-width: 40rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .main-container {
+    max-width: 40rem;
+    padding-top: 9rem;
+    margin-left: 8rem;
   }
 }
 
@@ -68,18 +77,15 @@ body {
   display: flex;
 }
 
-.main-time {
+.main-greeting {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
-  grid-area: time;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 3.5rem;
+  grid-area: greeting;
+  font-size: 1.8rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main-date {
@@ -99,10 +105,10 @@ body {
   font-size: 1.9rem;
 }
 
-.main-temp {
+.main-time {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
-  grid-area: temp;
+  grid-area: time;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -110,13 +116,45 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.9rem;
+}
+
+.main-temp {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: temp;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-size: 1.9rem;
+}
+
+.main-weather {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: weather;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   -webkit-box-align: left;
       -ms-flex-align: left;
           align-items: left;
-  font-size: 1.8rem;
-}
-
-.main-temp :first-child {
   font-size: 1.5rem;
 }
 /*# sourceMappingURL=style.css.map */
