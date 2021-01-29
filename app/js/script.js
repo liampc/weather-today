@@ -9,6 +9,7 @@ const morning = document.querySelector('.circle-morning')
 const afternoon = document.querySelector('.circle-afternoon')
 const evening = document.querySelector('.circle-evening')
 const weather = document.querySelector('#weather')
+const city = document.querySelector('#city')
 const temp = document.querySelector('#temp')
 const hideBtns = document.querySelectorAll(".will-hide")
 const overlay = document.querySelector('.main-overlay')
@@ -28,8 +29,8 @@ async function getCityCode(city){
 
         let city = response[0].EnglishName
         let code = response[0].Key
-       
-        return [city,code]
+        localStorage.setItem('cityCode', code)
+        localStorage.setItem('cityName', city)
         
     })
 
@@ -37,27 +38,38 @@ async function getCityCode(city){
 
 async function getWeather(){
    
-  
-    const response = await fetch("http://dataservice.accuweather.com/forecasts/v1/daily/1day/264884?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj")
+
+    let code = localStorage.getItem('cityCode')
+    if (code){
+        cityCode = code
+    } else {
+        cityCode = '264884' // valenzuela as default
+    }
+    
+    const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityCode}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
     response.json().then(function(response){
-        console.log(response)
-
-        let report = response.Headline.Text
-        let minTemp = response.DailyForecasts[0].Temperature.Minimum.Value
-        minTemp = converToCelcius(parseInt(minTemp))
-        let maxTemp = response.DailyForecasts[0].Temperature.Maximum.Value
-        maxTemp = converToCelcius(parseInt(maxTemp))
         
+        localStorage.setItem('weather', JSON.stringify(response))
 
-        temp.innerHTML = `${minTemp} - ${maxTemp} C`
-        weather.innerHTML = report
-
-       
     })
-
     
 }
 
+function showWeather(){
+
+    let response = JSON.parse(localStorage.getItem('weather'))
+
+    let report = response.Headline.Text
+    let minTemp = response.DailyForecasts[0].Temperature.Minimum.Value
+    minTemp = converToCelcius(parseInt(minTemp))
+    let maxTemp = response.DailyForecasts[0].Temperature.Maximum.Value
+    maxTemp = converToCelcius(parseInt(maxTemp))
+    
+    let cityName = localStorage.getItem('cityName')
+    city.innerHTML = cityName
+    temp.innerHTML = `${minTemp} - ${maxTemp} C`
+    weather.innerHTML = report
+}
 
 function showCurrentTime(){
     let current = new Date()
@@ -136,3 +148,6 @@ let getDate = setInterval(() => showCurrentDate(), 1000);
 
 
 window.addEventListener('load', changeBackground)
+// window.addEventListener('load', getCityCode('valenzuela'))
+// window.addEventListener('load', getWeather)
+window.addEventListener('load', showWeather)
