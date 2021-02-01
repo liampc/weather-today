@@ -7,10 +7,34 @@
     <title>Weather Today</title>
 </head>
 <body>
-    
-    <div class="container">
-
+    <div class="main">
+        <div class="main-container container">
+            <div class="main-greeting">
+                <span id="greeting">Hello from</span>
+                <a href="#" class="will-hide">Change Location</a>
+            </div>
+            <div class="main-date">
+                <span id="day"></span>
+                <span id="date"></span>
+                <span id="year"></span>
+            </div>
+            <div class="main-weather">
+                <p>Day: <span id="day"></span></p>
+                <p>Night: <span id='night'></span></p>
+            </div>
+            <div class="main-temp">
+                <span id="minTemp"></span>
+                <span id="maxTemp"></span>
+            </div>
+            <div class="main-headline">
+                <span>Headline:</span>
+                <span id="headline"></span>
+            </div>
+        </div>
     </div>
+
+
+
     <script src="app/js/script.js"></script>
 </body>
 </html>
