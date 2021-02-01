@@ -106,9 +106,8 @@ async function changeLocation(newCity){
 // !Display functions 
 
 function changeBackground(){
-    let current = new Date()
-    let timeNow = current.getHours()
-    
+    let timeNow = localStorage.getItem('currentHour')
+
     
     if (timeNow > 5 && timeNow < 12){
         greeting.innerHTML = 'Good Morning!'
@@ -156,12 +155,12 @@ async function showTime(timezone){
 
     let current = data.datetime
     // let date = current.slice(0, 9);
-    let hour = current.slice(11, 13);
+    let hour = parseInt(current.slice(11, 13));
+    localStorage.setItem('currentHour', hour)
     // let mins = current.slice(14, 16);
+    // let getampm = hour >= 12 ? 'PM' : 'AM'
 
-    let getampm = hour >= 12 ? 'PM' : 'AM'
-
-    return getampm
+    return hour
 }
 
 
