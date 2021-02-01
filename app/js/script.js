@@ -1,8 +1,8 @@
 
 // Selectors 
 
-const time = document.querySelector("#time")
-const ampm = document.querySelector("#ampm")
+const $time = document.querySelector("#time")
+const $ampm = document.querySelector("#ampm")
 const day = document.querySelector("#day")
 const date = document.querySelector("#date")
 const year = document.querySelector("#year")
@@ -149,21 +149,20 @@ hideBtns.forEach(btn => {
 
 // !Showing Current Date and Time
 
-function showCurrentTime(){
-    let current = new Date()
-    
-    let hour = current.getHours() 
+async function showTime(timezone){
+
+    const response = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`)
+    const data = await response.json()
+
+    let current = data.datetime
+    // let date = current.slice(0, 9);
+    let hour = current.slice(11, 13);
+    // let mins = current.slice(14, 16);
+
     let getampm = hour >= 12 ? 'PM' : 'AM'
-    hour = hour >= 12 ? hour % 12 : hour
 
-    let mins = current.getMinutes() 
-    mins = mins < 10 ? "0" + mins : mins
-
-    
-    time.innerHTML = `${hour} : ${mins}`
-    ampm.innerHTML = getampm
+    return getampm
 }
-
 
 
 function showCurrentDate(){
