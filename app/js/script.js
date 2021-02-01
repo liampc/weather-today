@@ -41,7 +41,7 @@ function showWeather(){
 
 }
 
-async function changeWeather(newCity){
+async function changeLocation(newCity){
 
     const a = await getCityCode(newCity)
     await getWeather(a)
