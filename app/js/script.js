@@ -23,17 +23,14 @@ function converToCelcius(tempF){
 async function getCityCode(city){
     const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj&q=${city}`)
 
-
-    response.json().then(function(response){
-        console.log(response)
-
-        let city = response[0].EnglishName
-        let code = response[0].Key
-        localStorage.setItem('cityCode', code)
-        localStorage.setItem('cityName', city)
-        
-    })
-
+    const data = await response.json()
+    let code = data[0].Key
+    let cityName = data[0].EnglishName
+    localStorage.setItem('cityCode', code)
+    localStorage.setItem('cityName', cityName)
+    // console.log(localStorage)
+    return code
+  
 }
 
 async function getWeather(){
