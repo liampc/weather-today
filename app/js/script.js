@@ -33,6 +33,7 @@ async function getCityCode(city){
   
 }
 
+
 async function getWeather(){
    
 
@@ -44,13 +45,14 @@ async function getWeather(){
     }
     
     const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityCode}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
-    response.json().then(function(response){
-        
-        localStorage.setItem('weather', JSON.stringify(response))
+    const data = await response.json()
 
-    })
+    localStorage.setItem('weather', JSON.stringify(data))
+    return data
     
 }
+
+
 
 function showWeather(){
 
