@@ -142,6 +142,14 @@ hideBtns.forEach(btn => {
 )})
 
 
+async function changeLocation(newCity){
+
+    const a = await getCityCode(newCity)
+    await getWeather(a)
+    showWeather()
+}
+
+
 let getTime = setInterval(() => showCurrentTime(), 1000);
 let getDate = setInterval(() => showCurrentDate(), 1000);
 
