@@ -24,7 +24,7 @@ const $today = document.querySelector('#today')
 // !Fetching APIs
 
 async function getCityCode(city){
-    const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj&q=${city}`)
+    const response = await fetch(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj&q=${city}`)
 
     const data = await response.json()
 
@@ -50,7 +50,7 @@ async function getWeather(){
         code = '264884' 
     }
     
-    const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${code}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
+    const response = await fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${code}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
     const data = await response.json()
 
     localStorage.setItem('weather', JSON.stringify(data))
@@ -92,7 +92,7 @@ function showWeather(){
 async function showTime(){
     let timezone = localStorage.getItem('timezone')
 
-    const response = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`)
+    const response = await fetch(`https://worldtimeapi.org/api/timezone/${timezone}`)
     const data = await response.json()
 
     let current = data.datetime
