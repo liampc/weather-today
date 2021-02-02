@@ -5,21 +5,20 @@ const $time = document.querySelector("#time")
 const $ampm = document.querySelector("#ampm")
 const $day = document.querySelector("#day")
 const $night = document.querySelector("#night")
-const date = document.querySelector("#date")
-const year = document.querySelector("#year")
-const main = document.querySelector('.main')
-const greeting = document.querySelector('#greeting')
-const morning = document.querySelector('.circle-morning')
-const afternoon = document.querySelector('.circle-afternoon')
-const evening = document.querySelector('.circle-evening')
+const $year = document.querySelector("#year")
+const $main = document.querySelector('.main')
+const $greeting = document.querySelector('#greeting')
+const $morning = document.querySelector('.circle-morning')
+const $afternoon = document.querySelector('.circle-afternoon')
+const $evening = document.querySelector('.circle-evening')
 const $weather = document.querySelector('#weather')
 const $city = document.querySelector('#city')
 const $temp = document.querySelector('#temp')
-const hideBtns = document.querySelectorAll(".will-hide")
-const overlay = document.querySelector('.main-overlay')
+const $hideBtns = document.querySelectorAll(".will-hide")
+const $overlay = document.querySelector('.main-overlay')
 const $changeBtn = document.querySelector('#change-btn')
 const $inputCity = document.querySelector('#input-city')
-
+const $today = document.querySelector('#today')
 
 
 // !Fetching APIs
@@ -105,35 +104,35 @@ function changeBackground(timeNow){
 
     
     if (timeNow > 5 && timeNow < 12){
-        greeting.innerHTML = 'Good Morning!'
-        morning.style.visibility = 'visible'
-        main.classList.remove('afternoon', 'evening')
-        main.classList.add('morning');
+        $greeting.innerHTML = 'Good Morning!'
+        $morning.style.visibility = 'visible'
+        $main.classList.remove('afternoon', 'evening')
+        $main.classList.add('morning');
     } 
     else if (timeNow >= 12 && timeNow < 18){
-        greeting.innerHTML = 'Good Afternoon'
-        afternoon.style.visibility = 'visible'
-        main.classList.remove('morning', 'evening')
-        main.classList.add('afternoon');
+        $greeting.innerHTML = 'Good Afternoon'
+        $afternoon.style.visibility = 'visible'
+        $main.classList.remove('morning', 'evening')
+        $main.classList.add('afternoon');
 
     } else {
-        greeting.innerHTML = 'Good Evening!'
-        evening.style.visibility = 'visible'
-        main.classList.remove('morning', 'afternoon')
-        main.classList.add('evening');
+        $greeting.innerHTML = 'Good Evening!'
+        $evening.style.visibility = 'visible'
+        $main.classList.remove('morning', 'afternoon')
+        $main.classList.add('evening');
     }
 }
 
 
-hideBtns.forEach(btn => {
+$hideBtns.forEach(btn => {
     btn.addEventListener('click', () => {
 
-        if (overlay.classList.contains('hidden')){
-            overlay.classList.remove('hidden')
-            overlay.classList.add('visible')
+        if ($overlay.classList.contains('hidden')){
+            $overlay.classList.remove('hidden')
+            $overlay.classList.add('visible')
         } else {
-            overlay.classList.remove('visible')
-            overlay.classList.add('hidden')
+            $overlay.classList.remove('visible')
+            $overlay.classList.add('hidden')
         }
     
     }
@@ -150,9 +149,10 @@ async function showTime(){
     const data = await response.json()
 
     let current = data.datetime
-    // let date = current.slice(0, 9);
+    let date = current.slice(0, 10);
     let hour = parseInt(current.slice(11, 13));
     localStorage.setItem('currentHour', hour)
+    localStorage.setItem('date', date)
     // let mins = current.slice(14, 16);
     // let getampm = hour >= 12 ? 'PM' : 'AM'
 
@@ -164,16 +164,16 @@ function showCurrentDate(){
     let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-    let current = new Date()
+    let date = localStorage.getItem('date')
+    console.log(date)
+    let [year, month, day] = date.split('-')
 
-    let monthNow = current.getMonth()
-    let dateNow = current.getDate()
-    let dayNow = current.getDay()
-    let yearNow = current.getFullYear()
+    day = parseInt(day)
+    month = parseInt(month) - 1
+    
+    $today.innerHTML = `${day} ${months[month]} `
+    $year.innerHTML = year
 
-    day.innerHTML = days[dayNow]
-    date.innerHTML = `${months[monthNow]} ${dateNow}`
-    year.innerHTML = yearNow
 }
 
 
@@ -187,19 +187,26 @@ async function changeLocation(){
     await getWeather(a)
     showWeather()
     const b = await showTime()
+    showCurrentDate()
     changeBackground(b)
 }
 
 
 // !Event Listeners
 
-window.addEventListener('load', changeLocation)
 
-// window.addEventListener('load', getWeather)
-// window.addEventListener('load', showWeather)
-// window.addEventListener('load', changeBackground(10))
-// let getTime = setInterval(() => showCurrentTime(), 1000);
-// let getDate = setInterval(() => showCurrentDate(), 1000);
+window.addEventListener('load', async function(){
 
+    let weather = localStorage.getItem('weather')
+    if (weather){
+        showWeather()
+        const b = await showTime()
+        showCurrentDate()
+        changeBackground(b)
+        
+    } else {
+        changeLocation()
+    }
+})
 
 $changeBtn.addEventListener('click', changeLocation)
