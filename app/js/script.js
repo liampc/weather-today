@@ -173,6 +173,9 @@ function showCurrentDate(){
 
 async function changeLocation(){
     let newCity = $inputCity.value
+    if (!newCity){
+        newCity = "Manila"
+    }
 
     const a = await getCityCode(newCity)
     await getWeather(a)
@@ -184,12 +187,10 @@ async function changeLocation(){
 
 // !Event Listeners
 
-window.addEventListener('load', getWeather)
-window.addEventListener('load', showWeather)
+window.addEventListener('load', changeLocation)
 
 // let getTime = setInterval(() => showCurrentTime(), 1000);
 // let getDate = setInterval(() => showCurrentDate(), 1000);
 
-window.addEventListener('load', changeBackground)
 
 $changeBtn.addEventListener('click', changeLocation)
