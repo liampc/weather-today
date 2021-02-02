@@ -16,16 +16,8 @@ const city = document.querySelector('#city')
 const temp = document.querySelector('#temp')
 const hideBtns = document.querySelectorAll(".will-hide")
 const overlay = document.querySelector('.main-overlay')
-
-
-
-// !Event Listeners
-
-window.addEventListener('load', showWeather)
-// let getTime = setInterval(() => showCurrentTime(), 1000);
-// let getDate = setInterval(() => showCurrentDate(), 1000);
-
-window.addEventListener('load', changeBackground)
+const $changeBtn = document.querySelector('#change-btn')
+const $inputCity = document.querySelector('#input-city')
 
 
 
@@ -38,9 +30,11 @@ async function getCityCode(city){
 
     let code = data[0].Key
     let cityName = data[0].EnglishName
+    let timezone = data[0].TimeZone.Name
     localStorage.setItem('cityData', JSON.stringify(data))
     localStorage.setItem('cityCode', code)
     localStorage.setItem('cityName', cityName)
+    localStorage.setItem('timezone', timezone)
     
     // console.log(localStorage)
     return code
@@ -92,12 +86,7 @@ function showWeather(){
 }
 
 
-async function changeLocation(newCity){
 
-    const a = await getCityCode(newCity)
-    await getWeather(a)
-    showWeather()
-}
 
 
 
@@ -105,8 +94,8 @@ async function changeLocation(newCity){
 
 // !Display functions 
 
-function changeBackground(){
-    let timeNow = localStorage.getItem('currentHour')
+function changeBackground(timeNow){
+    // let timeNow = localStorage.getItem('currentHour')
 
     
     if (timeNow > 5 && timeNow < 12){
@@ -148,7 +137,8 @@ hideBtns.forEach(btn => {
 
 // !Showing Current Date and Time
 
-async function showTime(timezone){
+async function showTime(){
+    let timezone = localStorage.getItem('timezone')
 
     const response = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`)
     const data = await response.json()
@@ -179,3 +169,27 @@ function showCurrentDate(){
     date.innerHTML = `${months[monthNow]} ${dateNow}`
     year.innerHTML = yearNow
 }
+
+
+async function changeLocation(){
+    let newCity = $inputCity.value
+
+    const a = await getCityCode(newCity)
+    await getWeather(a)
+    showWeather()
+    const b = await showTime()
+    changeBackground(b)
+}
+
+
+// !Event Listeners
+
+window.addEventListener('load', getWeather)
+window.addEventListener('load', showWeather)
+
+// let getTime = setInterval(() => showCurrentTime(), 1000);
+// let getDate = setInterval(() => showCurrentDate(), 1000);
+
+window.addEventListener('load', changeBackground)
+
+$changeBtn.addEventListener('click', changeLocation)
