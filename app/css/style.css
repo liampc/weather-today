@@ -110,7 +110,7 @@ body {
       grid-template-columns: 1fr 1fr;
   -ms-grid-rows: .5fr 1fr 1fr .5fr;
       grid-template-rows: .5fr 1fr 1fr .5fr;
-      grid-template-areas: "greeting greeting" "date time" "temp temp" "weather weather";
+      grid-template-areas: "greeting greeting" "temp temp" "day night" "weather weather";
   gap: 0.3125rem;
 }
 
@@ -169,26 +169,8 @@ body {
           align-items: center;
 }
 
-.main-date {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: date;
-}
-
-.main-time {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: time;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .main-temp {
-  -ms-grid-row: 3;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: temp;
@@ -202,6 +184,18 @@ body {
 
 .main-temp a {
   font-size: 0.9rem;
+}
+
+.main-day {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: day;
+}
+
+.main-night {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: night;
 }
 
 .main-weather {

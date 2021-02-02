@@ -3,7 +3,8 @@
 
 const $time = document.querySelector("#time")
 const $ampm = document.querySelector("#ampm")
-const day = document.querySelector("#day")
+const $day = document.querySelector("#day")
+const $night = document.querySelector("#night")
 const date = document.querySelector("#date")
 const year = document.querySelector("#year")
 const main = document.querySelector('.main')
@@ -11,9 +12,9 @@ const greeting = document.querySelector('#greeting')
 const morning = document.querySelector('.circle-morning')
 const afternoon = document.querySelector('.circle-afternoon')
 const evening = document.querySelector('.circle-evening')
-const weather = document.querySelector('#weather')
-const city = document.querySelector('#city')
-const temp = document.querySelector('#temp')
+const $weather = document.querySelector('#weather')
+const $city = document.querySelector('#city')
+const $temp = document.querySelector('#temp')
 const hideBtns = document.querySelectorAll(".will-hide")
 const overlay = document.querySelector('.main-overlay')
 const $changeBtn = document.querySelector('#change-btn')
@@ -46,10 +47,8 @@ async function getWeather(){
    
 
     let code = localStorage.getItem('cityCode')
-    if (code){
-        cityCode = code
-    } else {
-        cityCode = '264884' // valenzuela as default
+    if (!code){
+        cityCode = '264884' 
     }
     
     const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityCode}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
@@ -75,14 +74,21 @@ function showWeather(){
 
     let report = response.Headline.Text
     let minTemp = response.DailyForecasts[0].Temperature.Minimum.Value
-    minTemp = converToCelcius(parseInt(minTemp))
     let maxTemp = response.DailyForecasts[0].Temperature.Maximum.Value
+    let cityName = localStorage.getItem('cityName')
+    let day = response.DailyForecasts[0].Day.IconPhrase
+    let night = response.DailyForecasts[0].Night.IconPhrase
+
+    minTemp = converToCelcius(parseInt(minTemp))
     maxTemp = converToCelcius(parseInt(maxTemp))
     
-    let cityName = localStorage.getItem('cityName')
-    city.innerHTML = cityName
-    temp.innerHTML = `${minTemp} - ${maxTemp} C`
-    weather.innerHTML = report
+    
+    $city.innerHTML = cityName
+    $temp.innerHTML = `${minTemp} C° - ${maxTemp} C°`
+    $day.innerHTML = day
+    $night.innerHTML = night
+    $weather.innerHTML = report
+
 }
 
 
@@ -187,8 +193,11 @@ async function changeLocation(){
 
 // !Event Listeners
 
-window.addEventListener('load', changeLocation)
+// window.addEventListener('load', changeLocation)
 
+// window.addEventListener('load', getWeather)
+window.addEventListener('load', showWeather)
+window.addEventListener('load', changeBackground(10))
 // let getTime = setInterval(() => showCurrentTime(), 1000);
 // let getDate = setInterval(() => showCurrentDate(), 1000);
 

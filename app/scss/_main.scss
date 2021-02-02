@@ -45,8 +45,8 @@
         grid-template-rows: .5fr 1fr 1fr .5fr;
         grid-template-areas:
         "greeting greeting"
-        "date time"
         "temp temp"
+        "day night"
         "weather weather";
         gap: 0.3125rem;
         
@@ -96,18 +96,6 @@
     }
 
 
-    &-date {
-        grid-area: date;
-     
-    
-    }
-
-    &-time {
-        grid-area: time;
-        justify-content: center;
-        align-items: center;
-        
-    }
     
     &-temp {
         grid-area: temp;
@@ -118,6 +106,17 @@
             font-size: 0.9rem;
         }
 
+    }
+
+
+    &-day {
+        grid-area: day;
+     
+    }
+
+    &-night {
+        grid-area: night;
+        
     }
 
     &-weather{
