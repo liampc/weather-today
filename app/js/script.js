@@ -47,7 +47,7 @@ async function getWeather(){
 
     let code = localStorage.getItem('cityCode')
     if (!code){
-        cityCode = '264884' 
+        code = '264884' 
     }
     
     const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${code}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
@@ -59,12 +59,9 @@ async function getWeather(){
 }
 
 
-
 function converToCelcius(tempF){
     return tempC =  ((tempF - 32) * 5 / 9).toFixed(0)
 }
-
-
 
 
 function showWeather(){
@@ -90,10 +87,39 @@ function showWeather(){
 
 }
 
+// !Showing Current Date and Time
+
+async function showTime(){
+    let timezone = localStorage.getItem('timezone')
+
+    const response = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`)
+    const data = await response.json()
+
+    let current = data.datetime
+    let date = current.slice(0, 10);
+    let hour = parseInt(current.slice(11, 13));
+    localStorage.setItem('currentHour', hour)
+    localStorage.setItem('date', date)
+   
+
+    return hour
+}
 
 
+function showCurrentDate(){
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
+    let date = localStorage.getItem('date')
+    let [year, month, day] = date.split('-')
 
+    day = parseInt(day)
+    month = parseInt(month) - 1
+    
+    $today.innerHTML = `${day} ${months[month]} `
+    $year.innerHTML = year
+
+}
 
 
 
@@ -102,7 +128,6 @@ function showWeather(){
 function changeBackground(timeNow){
     // let timeNow = localStorage.getItem('currentHour')
 
-    
     if (timeNow > 5 && timeNow < 12){
         $greeting.innerHTML = 'Good Morning!'
         $morning.style.visibility = 'visible'
@@ -139,56 +164,18 @@ $hideBtns.forEach(btn => {
 )})
 
 
-
-// !Showing Current Date and Time
-
-async function showTime(){
-    let timezone = localStorage.getItem('timezone')
-
-    const response = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`)
-    const data = await response.json()
-
-    let current = data.datetime
-    let date = current.slice(0, 10);
-    let hour = parseInt(current.slice(11, 13));
-    localStorage.setItem('currentHour', hour)
-    localStorage.setItem('date', date)
-    // let mins = current.slice(14, 16);
-    // let getampm = hour >= 12 ? 'PM' : 'AM'
-
-    return hour
-}
-
-
-function showCurrentDate(){
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
-    let date = localStorage.getItem('date')
-    console.log(date)
-    let [year, month, day] = date.split('-')
-
-    day = parseInt(day)
-    month = parseInt(month) - 1
-    
-    $today.innerHTML = `${day} ${months[month]} `
-    $year.innerHTML = year
-
-}
-
-
 async function changeLocation(){
     let newCity = $inputCity.value
     if (!newCity){
         newCity = "Manila"
     }
 
-    const a = await getCityCode(newCity)
-    await getWeather(a)
+    const city = await getCityCode(newCity)
+    await getWeather(city)
     showWeather()
-    const b = await showTime()
+    const time = await showTime()
     showCurrentDate()
-    changeBackground(b)
+    changeBackground(time)
 }
 
 
@@ -200,13 +187,14 @@ window.addEventListener('load', async function(){
     let weather = localStorage.getItem('weather')
     if (weather){
         showWeather()
-        const b = await showTime()
+        const time = await showTime()
         showCurrentDate()
-        changeBackground(b)
+        changeBackground(time)
         
     } else {
         changeLocation()
     }
 })
+
 
 $changeBtn.addEventListener('click', changeLocation)
