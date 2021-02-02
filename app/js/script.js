@@ -51,7 +51,7 @@ async function getWeather(){
         cityCode = '264884' 
     }
     
-    const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityCode}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
+    const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${code}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj`)
     const data = await response.json()
 
     localStorage.setItem('weather', JSON.stringify(data))
@@ -193,11 +193,11 @@ async function changeLocation(){
 
 // !Event Listeners
 
-// window.addEventListener('load', changeLocation)
+window.addEventListener('load', changeLocation)
 
 // window.addEventListener('load', getWeather)
-window.addEventListener('load', showWeather)
-window.addEventListener('load', changeBackground(10))
+// window.addEventListener('load', showWeather)
+// window.addEventListener('load', changeBackground(10))
 // let getTime = setInterval(() => showCurrentTime(), 1000);
 // let getDate = setInterval(() => showCurrentDate(), 1000);
 
