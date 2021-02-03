@@ -153,7 +153,7 @@
     @include breakpoint-up(large){
 
         &-morning {
-        background-image: url('/images/morning-desktop.png') ;
+        background-image: url('../../images/morning-desktop.png') ;
         background-position: 132% 74%;
         background-size: 79%;
 
@@ -164,7 +164,7 @@
     @include breakpoint-up(large){
 
         &-afternoon {
-        background-image: url('/images/afternoon-desktop.png') ;
+        background-image: url('../../images/afternoon-desktop.png') ;
         background-position: 105% 11%;
         background-size: 68%;
     
@@ -175,7 +175,7 @@
     @include breakpoint-up(large){
 
         &-evening {
-        background-image: url('/images/evening-desktop.png') ;
+        background-image: url('../../images/evening-desktop.png') ;
         background-position: 101% -25%;
         background-size: 80%;
       
