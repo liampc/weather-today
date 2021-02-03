@@ -24,22 +24,26 @@ const $today = document.querySelector('#today')
 // !Fetching APIs
 
 async function getCityCode(city){
-    const response = await fetch(`https://dataservice.accuweather.com/locations/v1/cities/search?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj&q=${city}`, {
-        mode: 'cors'
-    })
+    try {
+        const response = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj&q=${city}`, {
+        mode: 'cors'})
 
-    const data = await response.json()
+        const data = await response.json()
 
-    let code = data[0].Key
-    let cityName = data[0].EnglishName
-    let timezone = data[0].TimeZone.Name
-    localStorage.setItem('cityData', JSON.stringify(data))
-    localStorage.setItem('cityCode', code)
-    localStorage.setItem('cityName', cityName)
-    localStorage.setItem('timezone', timezone)
-    
-    // console.log(localStorage)
-    return code
+        let code = data[0].Key
+        let cityName = data[0].EnglishName
+        let timezone = data[0].TimeZone.Name
+        localStorage.setItem('cityData', JSON.stringify(data))
+        localStorage.setItem('cityCode', code)
+        localStorage.setItem('cityName', cityName)
+        localStorage.setItem('timezone', timezone)
+        
+        // console.log(localStorage)
+        return code
+    }
+    catch (error){
+        console.log(error)
+    }
   
 }
 
@@ -51,13 +55,20 @@ async function getWeather(){
     if (!code){
         code = '264884' 
     }
-    
-    const response = await fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${code}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj` , {
-        mode: 'cors'})
-    const data = await response.json()
+    try {
 
-    localStorage.setItem('weather', JSON.stringify(data))
-    return data
+        const response = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${code}?apikey=Vb1TkVOlVB5OhYJE6kzYMXXYtBXjUeKj` , {
+        mode: 'cors'})
+        const data = await response.json()
+
+        localStorage.setItem('weather', JSON.stringify(data))
+        return data
+
+    }
+    catch (error) {
+        console.log(error)
+    }
+
     
 }
 
@@ -93,20 +104,25 @@ function showWeather(){
 // !Showing Current Date and Time
 
 async function showTime(){
+
     let timezone = localStorage.getItem('timezone')
 
-    const response = await fetch(`https://worldtimeapi.org/api/timezone/${timezone}`, {
+    try {
+        const response = await fetch(`http://worldtimeapi.org/api/timezone/${timezone}`, {
         mode: 'cors'})
-    const data = await response.json()
+        const data = await response.json()
 
-    let current = data.datetime
-    let date = current.slice(0, 10);
-    let hour = parseInt(current.slice(11, 13));
-    localStorage.setItem('currentHour', hour)
-    localStorage.setItem('date', date)
-   
-
-    return hour
+        let current = data.datetime
+        let date = current.slice(0, 10);
+        let hour = parseInt(current.slice(11, 13));
+        localStorage.setItem('currentHour', hour)
+        localStorage.setItem('date', date)
+    
+        return hour
+    }
+    catch(error){
+        console.log('Error')
+    }
 }
 
 
