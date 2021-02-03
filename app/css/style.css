@@ -229,7 +229,7 @@ body {
 
 @media (min-width: 64rem) {
   .circle-morning {
-    background-image: url("/images/morning-desktop.png");
+    background-image: url("../../images/morning-desktop.png");
     background-position: 132% 74%;
     background-size: 79%;
   }
@@ -237,7 +237,7 @@ body {
 
 @media (min-width: 64rem) {
   .circle-afternoon {
-    background-image: url("/images/afternoon-desktop.png");
+    background-image: url("../../images/afternoon-desktop.png");
     background-position: 105% 11%;
     background-size: 68%;
   }
@@ -245,7 +245,7 @@ body {
 
 @media (min-width: 64rem) {
   .circle-evening {
-    background-image: url("/images/evening-desktop.png");
+    background-image: url("../../images/evening-desktop.png");
     background-position: 101% -25%;
     background-size: 80%;
   }
