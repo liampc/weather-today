@@ -21,11 +21,11 @@
 
 ### Desktop
 
-![desktop-afternoon](./images/desktop-afternoon.png)
+![desktop-afternoon](./images/Desktop-afternoon.png)
 
 ### Ipad 
 
-![ipad-evening](./images/ipad-evening.png)
+![ipad-evening](./images/Ipad-evening.png)
 
 
 
