@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="app/css/style.css">
+    <link rel="stylesheet" href="app/dist/style.css">
     <title>Weather Today</title>
 </head>
 <body>
@@ -22,12 +22,12 @@
         </div>
         <div class="main-container container">
             <div class="main-greeting">
-                <span id="greeting"></span>
+                <span id="greeting"></span><span id="city"></span>
+                <a href="#" class="will-hide">Change Location</a>
             </div>
             <div class="main-temp">
-                <span id="city"></span>
-                <span id="temp"></span>
-                <a href="#" class="will-hide">Change Location</a>
+                <span id="min"></span>
+                <span id="max"></span>
             </div>
             <div class="main-date">
                 <span id="today"></span>

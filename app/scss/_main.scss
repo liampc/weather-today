@@ -45,8 +45,8 @@
         grid-template-rows: .5fr 1fr 1fr .5fr;
         grid-template-areas:
         "greeting greeting"
-        "temp date"
-        "day night"
+        "date day"
+        "temp night"
         "weather weather";
         gap: 0.3125rem;
         
@@ -54,11 +54,11 @@
 
         @include breakpoint-up(medium){
             max-width: 40rem;
+            grid-template-columns: 1fr 2fr;
         }
 
         @include breakpoint-up(large){
-            max-width: 40rem;
-            padding-top: 9rem;
+            padding-top: 5rem;
             margin-left: 8rem;
         }
 
@@ -66,7 +66,7 @@
             padding: 1.0625rem;
             background-color: $White;
             border-radius: 0.625rem;
-            font-size: 1.9rem;
+            font-size: 1.5rem;
             display:flex;
             flex-direction: column;
             justify-content: center;
@@ -74,8 +74,8 @@
 
 
             @include breakpoint-up(large){
-                font-size: 2.5rem;
-                padding: 1.5rem;
+                font-size: 1.7rem;
+                padding: 1.5rem;    
             }
             
         }
@@ -86,13 +86,17 @@
         }
 
         
-
-        
     }
 
     &-greeting {
         grid-area: greeting;
-        align-items: center;
+        align-items: flex-start;
+
+        a {
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: $Purple;
+        }
     }
 
 
@@ -101,10 +105,6 @@
         grid-area: temp;
         align-items: flex-start;
         justify-content: space-evenly;
-
-        a {
-            font-size: 0.9rem;
-        }
 
     }
 

@@ -110,20 +110,21 @@ body {
       grid-template-columns: 1fr 1fr;
   -ms-grid-rows: .5fr 1fr 1fr .5fr;
       grid-template-rows: .5fr 1fr 1fr .5fr;
-      grid-template-areas: "greeting greeting" "temp date" "day night" "weather weather";
+      grid-template-areas: "greeting greeting" "date day" "temp night" "weather weather";
   gap: 0.3125rem;
 }
 
 @media (min-width: 40rem) {
   .main-container {
     max-width: 40rem;
+    -ms-grid-columns: 1fr 2fr;
+        grid-template-columns: 1fr 2fr;
   }
 }
 
 @media (min-width: 64rem) {
   .main-container {
-    max-width: 40rem;
-    padding-top: 9rem;
+    padding-top: 5rem;
     margin-left: 8rem;
   }
 }
@@ -132,7 +133,7 @@ body {
   padding: 1.0625rem;
   background-color: rgba(251, 246, 240, 0.84);
   border-radius: 0.625rem;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -150,7 +151,7 @@ body {
 
 @media (min-width: 64rem) {
   .main-container > * {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     padding: 1.5rem;
   }
 }
@@ -164,13 +165,19 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: greeting;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.main-greeting a {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: #9D65C9;
 }
 
 .main-temp {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: temp;
   -webkit-box-align: start;
@@ -181,19 +188,15 @@ body {
           justify-content: space-evenly;
 }
 
-.main-temp a {
-  font-size: 0.9rem;
-}
-
 .main-date {
   -ms-grid-row: 2;
-  -ms-grid-column: 2;
+  -ms-grid-column: 1;
   grid-area: date;
 }
 
 .main-day {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: day;
 }
 

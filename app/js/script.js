@@ -14,6 +14,8 @@ const $evening = document.querySelector('.circle-evening')
 const $weather = document.querySelector('#weather')
 const $city = document.querySelector('#city')
 const $temp = document.querySelector('#temp')
+const $min = document.querySelector('#min')
+const $max = document.querySelector('#max')
 const $hideBtns = document.querySelectorAll(".will-hide")
 const $overlay = document.querySelector('.main-overlay')
 const $changeBtn = document.querySelector('#change-btn')
@@ -93,8 +95,9 @@ function showWeather(){
     maxTemp = converToCelcius(parseInt(maxTemp))
     
     
-    $city.innerHTML = cityName
-    $temp.innerHTML = `${minTemp} C° - ${maxTemp} C°`
+    $city.innerHTML = `${cityName}!`
+    $min.innerHTML = `${minTemp} C°`
+    $max.innerHTML = `${maxTemp} C°`
     $day.innerHTML = day
     $night.innerHTML = night
     $weather.innerHTML = report
@@ -149,7 +152,7 @@ function changeBackground(timeNow){
     // let timeNow = localStorage.getItem('currentHour')
 
     if (timeNow > 5 && timeNow < 12){
-        $greeting.innerHTML = 'Good Morning!'
+        $greeting.innerHTML = 'Good Morning'
         $morning.style.visibility = 'visible'
         $afternoon.style.visibility = 'hidden'
         $evening.style.visibility = 'hidden'
@@ -166,7 +169,7 @@ function changeBackground(timeNow){
         $main.classList.add('afternoon');
 
     } else {
-        $greeting.innerHTML = 'Good Evening!'
+        $greeting.innerHTML = 'Good Evening'
         $evening.style.visibility = 'visible'
         $afternoon.style.visibility = 'hidden'
         $morning.style.visibility = 'hidden'
