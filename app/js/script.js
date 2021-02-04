@@ -151,20 +151,28 @@ function changeBackground(timeNow){
     if (timeNow > 5 && timeNow < 12){
         $greeting.innerHTML = 'Good Morning!'
         $morning.style.visibility = 'visible'
+        $afternoon.style.visibility = 'hidden'
+        $evening.style.visibility = 'hidden'
         $main.classList.remove('afternoon', 'evening')
         $main.classList.add('morning');
+       
     } 
     else if (timeNow >= 12 && timeNow < 18){
         $greeting.innerHTML = 'Good Afternoon'
         $afternoon.style.visibility = 'visible'
+        $morning.style.visibility = 'hidden'
+        $evening.style.visibility = 'hidden'
         $main.classList.remove('morning', 'evening')
         $main.classList.add('afternoon');
 
     } else {
         $greeting.innerHTML = 'Good Evening!'
         $evening.style.visibility = 'visible'
+        $afternoon.style.visibility = 'hidden'
+        $morning.style.visibility = 'hidden'
         $main.classList.remove('morning', 'afternoon')
         $main.classList.add('evening');
+       
     }
 }
 
