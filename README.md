@@ -13,19 +13,32 @@
 - Show the weather forecast of a city
 
 
+## APIs sources:
+
+### Accuweather 
+
+https://developer.accuweather.com/
+
+### Worldtimeapi
+
+http://worldtimeapi.org/
+
+
+
 ## Responsive Design
 
 ### Mobile
 
 ![phone-morning](./images/phone-morning.png)
 
-### Desktop
-
-![desktop-afternoon](./images/Desktop-afternoon.png)
 
 ### Ipad 
 
-![ipad-evening](./images/Ipad-evening.png)
+![ipad-evening](./images/ipad-afternoon.png)
+
+### Desktop
+
+![desktop-afternoon](./images/desktop-evening.png)
 
 
 
